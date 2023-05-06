@@ -14,7 +14,7 @@ def transpile_line(line: str):
     
     # If line ends with ; replace all spaces with _
     if line.endswith(';\n'):
-        return transpile_line(line.replace(' ', '_').replace(";", ""))
+        return transpile_line(re.sub(' {1}', '', line).replace(";", ""))
     
     # If accessing class variables contains a name surrounded in {} call it like a function
     if re.search("\.{.+}", line):
